@@ -1127,7 +1127,7 @@ static void stbiw__encode_png_line(unsigned char *pixels, int stride_bytes, int 
       case 2: for (i=pixel_bytes; i < width*n; ++i) line_buffer[i] = z[i] - z[i-signed_stride]; break;
       case 3: for (i=pixel_bytes; i < width*n; ++i) line_buffer[i] = z[i] - ((z[i-pixel_bytes] + z[i-signed_stride])>>1); break;
       case 4: for (i=pixel_bytes; i < width*n; ++i) line_buffer[i] = z[i] - stbiw__paeth(z[i-pixel_bytes], z[i-signed_stride], z[i-signed_stride-pixel_bytes]); break;
-      case 5: for (i=pixel_bytes; i < width*n; ++i) line_buffer[i] = z[i] - (z[i-pixel_bytes>>1]); break;
+      case 5: for (i=pixel_bytes; i < width*n; ++i) line_buffer[i] = z[i] - (z[i-pixel_bytes]>>1); break;
       case 6: for (i=pixel_bytes; i < width*n; ++i) line_buffer[i] = z[i] - stbiw__paeth(z[i-pixel_bytes], 0,0); break;
    }
 }
